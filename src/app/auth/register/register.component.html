@@ -1,0 +1,35 @@
+
+<section>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="p-fluid">
+  
+      <div class="p-field p-float-label">
+        <input id="firstName" pInputText formControlName="firstName" />
+        <label for="firstName">First Name</label>
+      </div>
+  
+      <div class="p-field p-float-label">
+        <input id="lastName" pInputText formControlName="lastName" />
+        <label for="lastName">Last Name</label>
+      </div>
+  
+      <div class="p-field p-float-label">
+        <input id="email" pInputText formControlName="email" type="email" />
+        <label for="email">Email</label>
+      </div>
+  
+      <div class="p-field p-float-label">
+        <input id="passWord" pInputText formControlName="passWord" type="password" />
+        <label for="passWord">Password</label>
+      </div>
+  
+      <div class="p-field p-float-label">
+        <input id="rePassword" pInputText formControlName="rePassword" type="password" />
+        <label for="rePassword">Re-enter Password</label>
+      </div>
+  
+      <button pButton type="submit" label="Register" [disabled]="registerForm.invalid"></button>
+    </div>
+  </form>
+  
+</section>
