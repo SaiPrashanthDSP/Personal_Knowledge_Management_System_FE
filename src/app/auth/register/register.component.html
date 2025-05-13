@@ -1,35 +1,44 @@
+<mat-dialog-content>
+  <h2 mat-dialog-title class="form-title">Register</h2>
 
-<section>
-  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-    <div class="p-fluid">
-  
-      <div class="p-field p-float-label">
-        <input id="firstName" pInputText formControlName="firstName" />
-        <label for="firstName">First Name</label>
-      </div>
-  
-      <div class="p-field p-float-label">
-        <input id="lastName" pInputText formControlName="lastName" />
-        <label for="lastName">Last Name</label>
-      </div>
-  
-      <div class="p-field p-float-label">
-        <input id="email" pInputText formControlName="email" type="email" />
-        <label for="email">Email</label>
-      </div>
-  
-      <div class="p-field p-float-label">
-        <input id="passWord" pInputText formControlName="passWord" type="password" />
-        <label for="passWord">Password</label>
-      </div>
-  
-      <div class="p-field p-float-label">
-        <input id="rePassword" pInputText formControlName="rePassword" type="password" />
-        <label for="rePassword">Re-enter Password</label>
-      </div>
-  
-      <button pButton type="submit" label="Register" [disabled]="registerForm.invalid"></button>
-    </div>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="register-form">
+    
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>User Name</mat-label>
+      <input matInput formControlName="userName" autocomplete="off" />
+      <mat-error *ngIf="registerForm.get('userName')?.touched && registerForm.get('userName')?.hasError('required')">
+        User Name is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" autocomplete="off" />
+      <mat-error *ngIf="registerForm.get('email')?.touched">
+        <ng-container *ngIf="registerForm.get('email')?.hasError('required')">
+          Email is required
+        </ng-container>
+        <ng-container *ngIf="registerForm.get('email')?.hasError('email')">
+          Invalid email format
+        </ng-container>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" formControlName="password" autocomplete="off" />
+      <mat-error *ngIf="registerForm.get('password')?.touched">
+        <ng-container *ngIf="registerForm.get('password')?.hasError('required')">
+          Password is required
+        </ng-container>
+        <ng-container *ngIf="registerForm.get('password')?.hasError('minlength')">
+          Minimum 6 characters required
+        </ng-container>
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="registerForm.invalid" class="submit-btn">
+      Register
+    </button>
   </form>
-  
-</section>
+</mat-dialog-content>

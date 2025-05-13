@@ -14,6 +14,7 @@
   a {
     text-decoration: none;
     color: inherit;
+    cursor: pointer;
   }
   
   /* Container */
@@ -90,6 +91,7 @@
     background-color: #0077cc;
     color: white;
     border: none;
+    
   }
   
   .secondary {
@@ -163,4 +165,9 @@
   footer p {
     margin: 0.5rem 0;
   }
-  
+  .action-buttons {
+    margin-top: 20px;
+    button {
+      margin: 0 10px;
+    }
+  }
